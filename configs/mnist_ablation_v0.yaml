@@ -1,0 +1,41 @@
+experiment:
+  name: "mnist_hysteresis_v0"
+  seed: 1337
+  device: "cuda"          # "cuda" veya "cpu"
+  strict_determinism: true
+
+data:
+  dataset: "MNIST"
+  root: "./data"
+  batch_size: 128
+  num_workers: 0
+  shuffle: true
+  normalize: true
+  normalize_mean: [0.1307]
+  normalize_std:  [0.3081]
+  augmentation: "none"
+
+split:
+  A_digits: [0, 1, 2, 3, 4]
+  B_digits: [5, 6, 7, 8, 9]
+
+model:
+  arch: "simple_cnn"
+  norm: "none"           # none | group | layer
+  group_norm_groups: 8
+  activation: "relu"
+
+train:
+  optimizer: "sgd"       # sgd | adam
+  lr: 0.05
+  momentum: 0.9
+  weight_decay: 0.0
+  epochs_total: 20
+  phase_epochs: 10
+  scenario: "SAB"        # SAB | SBA
+  log_every_steps: 100
+
+logging:
+  save_dir: "./runs"
+  save_weights_every_epoch: true
+  save_activations: false
