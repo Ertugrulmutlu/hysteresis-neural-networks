@@ -1,7 +1,10 @@
-﻿.venv/
+.venv/
 venv/
 data/
-results/
+results/*
+!results/manifests/
+results/manifests/*
+!results/manifests/*.json
 plots/
 logs/
 diagnostics/

@@ -1,0 +1,61 @@
+{
+  "entries": [
+    {
+      "seed": 101,
+      "scenario": "SABC",
+      "expected_run_directory": "results\\mnist_class_split_SABC_reset_relu_long50k_lr0400_seed101_normnone"
+    },
+    {
+      "seed": 101,
+      "scenario": "SBAC",
+      "expected_run_directory": "results\\mnist_class_split_SBAC_reset_relu_long50k_lr0400_seed101_normnone"
+    },
+    {
+      "seed": 202,
+      "scenario": "SABC",
+      "expected_run_directory": "results\\mnist_class_split_SABC_reset_relu_long50k_lr0400_seed202_normnone"
+    },
+    {
+      "seed": 202,
+      "scenario": "SBAC",
+      "expected_run_directory": "results\\mnist_class_split_SBAC_reset_relu_long50k_lr0400_seed202_normnone"
+    },
+    {
+      "seed": 303,
+      "scenario": "SABC",
+      "expected_run_directory": "results\\mnist_class_split_SABC_reset_relu_long50k_lr0400_seed303_normnone"
+    },
+    {
+      "seed": 303,
+      "scenario": "SBAC",
+      "expected_run_directory": "results\\mnist_class_split_SBAC_reset_relu_long50k_lr0400_seed303_normnone"
+    },
+    {
+      "seed": 404,
+      "scenario": "SABC",
+      "expected_run_directory": "results\\mnist_class_split_SABC_reset_relu_long50k_lr0400_seed404_normnone"
+    },
+    {
+      "seed": 404,
+      "scenario": "SBAC",
+      "expected_run_directory": "results\\mnist_class_split_SBAC_reset_relu_long50k_lr0400_seed404_normnone"
+    },
+    {
+      "seed": 505,
+      "scenario": "SABC",
+      "expected_run_directory": "results\\mnist_class_split_SABC_reset_relu_long50k_lr0400_seed505_normnone"
+    },
+    {
+      "seed": 505,
+      "scenario": "SBAC",
+      "expected_run_directory": "results\\mnist_class_split_SBAC_reset_relu_long50k_lr0400_seed505_normnone"
+    }
+  ],
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ]
+}

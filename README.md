@@ -97,7 +97,7 @@ uv run python -m src.analysis.common_relaxation `
 
 Training writes the existing epoch artifacts for the A/B phases, plus `weights_relax_step_XXXXXX.pt` and `relaxation_metrics.csv` for C. Analysis writes `common_relaxation_metrics.csv`, `common_relaxation_summary.json`, and five history figures. The performance-matched endpoint is selected mechanically from the configured thresholds and is `null` when no checkpoint qualifies.
 
-## Current status and next experiments
+## Current status
 
 Completed:
 
@@ -109,11 +109,14 @@ Completed:
 - exploratory TOST practical-equivalence analysis for the 500-examples-per-class endpoint
 - fresh five-paired-seed 50,000-update common-relaxation stress test
 
-Next:
+Completed final controls:
 
-- completed: five-paired-seed LeakyReLU mechanism control at matched LR=0.04
-- completed: five-paired-seed symmetric same-label rotated-MNIST control
-- select at most one additional architecture or dataset based on those outcomes
+- five-paired-seed LeakyReLU mechanism control at matched LR=0.04
+- five-paired-seed symmetric same-label rotated-MNIST control
+
+Optional future extension:
+
+- one wider architecture or second dataset
 
 A cyclic mixture schedule remains optional and is only required if the final paper makes a strict cyclic-hysteresis claim rather than a narrower persistent-history-dependence claim.
 
@@ -191,9 +194,9 @@ Run a fresh frozen-representation probe:
 
 ```powershell
 uv run python -m src.analysis.linear_probe `
-  --run-sabc results\mnist_class_split_SABC_reset_relu_seed1337_normnone `
-  --run-sbac results\mnist_class_split_SBAC_reset_relu_seed1337_normnone `
-  --checkpoint performance-matched `
+  --run-sabc results\mnist_class_split_SABC_reset_relu_seed101_normnone `
+  --run-sbac results\mnist_class_split_SBAC_reset_relu_seed101_normnone `
+  --checkpoint relaxation-step:10000 `
   --feature-layer fc1 `
   --train-samples-per-class 500 `
   --test-samples-per-class 200 `
@@ -393,7 +396,7 @@ Predeclared performance-matched FC1 secondary analysis (seeds without a qualifyi
 ```powershell
 uv run python -m src.analysis.aggregate_linear_probe `
   --manifest results\manifests\class_split_reset_relu_20seeds_paired.json `
-  --checkpoint performance-matched --max-accuracy-gap 0.002 `
+  --checkpoint relaxation-step:10000 --max-accuracy-gap 0.002 `
   --minimum-accuracy 0.97 --numerical-tolerance 1e-12 --feature-layer fc1 `
   --train-samples-per-class 500 --test-samples-per-class 200 `
   --probe-epochs 20 --probe-lr 0.01 --probe-weight-decay 0.0 `
@@ -509,7 +512,7 @@ The layerwise CKA pattern suggests that the late increase in `H_repr` is driven 
 **Long-horizon conclusion.** The two histories remain behaviorally close but do not converge to the same measured internal representation over 50,000 shared updates. The evidence supports **behavioral convergence without representational convergence over the measured horizon**. It does not establish permanent memory, strict physical hysteresis, or a universally increasing residue.
 # LeakyReLU Mechanism Control
 
-This prepared experiment tests whether ReLU sparse/low-positive-activity behavior may reduce plasticity and help preserve history-dependent representations. It replaces only the activation with LeakyReLU (negative slope `0.01`) while matching the completed ReLU long50k protocol. A reduction would support an activation-mediated contribution, but would not prove that dead ReLUs are the sole cause. No numerical result is included before execution.
+This mechanism-control experiment tests whether ReLU sparse/low-positive-activity behavior may reduce plasticity and help preserve history-dependent representations. The final comparison reruns both ReLU and LeakyReLU at the same stable learning rate of 0.04 after the original learning-rate-0.05 LeakyReLU condition showed numerical instability. The completed results are reported below.
 
 The direct condition effect is `delta_activation = H_repr_LeakyReLU - H_repr_ReLU`, so negative values indicate reduced residue under LeakyReLU. Positive `H_repr` within either condition does not answer the mechanism question by itself. Conditions are strictly paired using seeds `101, 202, 303, 404, 505` and relaxation updates `0, 100, 500, 1000, 2500, 5000, 10000, 25000, 50000`. The primary endpoint is the paired condition difference at 50,000 updates; 10,000, 25,000, and change-over-time comparisons are secondary.
 
@@ -609,4 +612,4 @@ For the rotated-MNIST control, all five paired seeds reached the predeclared beh
 
 ### Release artifacts
 
-Final paper-facing artifacts are copied to `paper_artifacts/final_release/`. Raw run directories under `results/` remain the source of truth and should not be moved or rewritten after release packaging.
+Final paper-facing artifacts are stored under `paper_artifacts/01_pilots_and_legacy/` through `paper_artifacts/06_rotated_mnist/`. Raw run directories under `results/` remain the source of truth and should not be moved or rewritten after release packaging.
