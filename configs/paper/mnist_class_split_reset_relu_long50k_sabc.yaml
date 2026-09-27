@@ -1,0 +1,10 @@
+base_config: ../../configs/mnist_common_relaxation_sabc.yaml
+data: {protocol: class_split}
+model: {activation: relu, norm: none}
+train:
+  relaxation_optimizer_policy: reset
+  relaxation_steps: 50000
+  relaxation_checkpoints: [0, 100, 500, 1000, 2500, 5000, 10000, 25000, 50000]
+logging:
+  run_name: mnist_class_split_SABC_reset_relu_long50k_seed1337_normnone
+  overwrite: false

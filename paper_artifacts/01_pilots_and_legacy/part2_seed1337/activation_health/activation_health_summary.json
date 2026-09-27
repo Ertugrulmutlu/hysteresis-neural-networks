@@ -1,0 +1,72 @@
+{
+  "epsilon": 1e-06,
+  "dead_threshold": 0.0001,
+  "summaries": [
+    {
+      "scenario": "SAB",
+      "layer": "conv1",
+      "number_of_units": 32,
+      "dead_unit_count": 7,
+      "dead_ratio": 0.21875,
+      "average_activation_mean": 0.1683475669771397,
+      "average_activation_variance": 0.06265487156170846,
+      "average_nonzero_rate": 0.4258817320299215,
+      "average_sparsity": 0.5741182679700785
+    },
+    {
+      "scenario": "SAB",
+      "layer": "conv2",
+      "number_of_units": 64,
+      "dead_unit_count": 51,
+      "dead_ratio": 0.796875,
+      "average_activation_mean": 0.015809535621531784,
+      "average_activation_variance": 0.05522893567698369,
+      "average_nonzero_rate": 0.007818797609552064,
+      "average_sparsity": 0.9921812023904479
+    },
+    {
+      "scenario": "SAB",
+      "layer": "fc1",
+      "number_of_units": 128,
+      "dead_unit_count": 69,
+      "dead_ratio": 0.5390625,
+      "average_activation_mean": 0.30063495242341887,
+      "average_activation_variance": 1.2030857330058586,
+      "average_nonzero_rate": 0.1051796871793158,
+      "average_sparsity": 0.8948203128206842
+    },
+    {
+      "scenario": "SBA",
+      "layer": "conv1",
+      "number_of_units": 32,
+      "dead_unit_count": 1,
+      "dead_ratio": 0.03125,
+      "average_activation_mean": 0.09168399117857007,
+      "average_activation_variance": 0.046053707910953534,
+      "average_nonzero_rate": 0.3563454052018642,
+      "average_sparsity": 0.6436545947981358
+    },
+    {
+      "scenario": "SBA",
+      "layer": "conv2",
+      "number_of_units": 64,
+      "dead_unit_count": 57,
+      "dead_ratio": 0.890625,
+      "average_activation_mean": 0.011107701337141618,
+      "average_activation_variance": 0.039579971967441056,
+      "average_nonzero_rate": 0.005499960229705891,
+      "average_sparsity": 0.9945000397702941
+    },
+    {
+      "scenario": "SBA",
+      "layer": "fc1",
+      "number_of_units": 128,
+      "dead_unit_count": 88,
+      "dead_ratio": 0.6875,
+      "average_activation_mean": 0.2222703030377602,
+      "average_activation_variance": 1.1433923263844807,
+      "average_nonzero_rate": 0.06807421880421316,
+      "average_sparsity": 0.9319257811957868
+    }
+  ]
+}

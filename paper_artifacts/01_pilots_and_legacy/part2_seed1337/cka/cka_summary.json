@@ -1,0 +1,11 @@
+{
+  "representation_hysteresis": 0.3175413894863909,
+  "layers": [
+    "conv1",
+    "conv2",
+    "fc1",
+    "logits"
+  ],
+  "probe_samples_per_class": 200,
+  "conv_feature_method": "global_average_pooling"
+}

@@ -1,0 +1,5 @@
+base_config: ../../configs/mnist_common_relaxation_sabc.yaml
+data: {protocol: class_split}
+model: {activation: leaky_relu, leaky_relu_negative_slope: 0.01}
+train: {relaxation_optimizer_policy: reset}
+logging: {run_name: mnist_class_split_SABC_reset_leaky_relu_seed1337_normnone}

@@ -1,0 +1,32 @@
+{
+  "analysis": "exploratory_TOST_equivalence",
+  "domain": "full",
+  "probe_epoch": 20,
+  "train_samples_per_class": 500,
+  "model_seed_count": 20,
+  "equivalence_margin_accuracy": 0.005,
+  "equivalence_margin_percentage_points": 0.5,
+  "mean_difference": 0.000900006294250475,
+  "mean_difference_percentage_points": 0.0900006294250475,
+  "standard_deviation": 0.0032951267768447524,
+  "ci_90": [
+    -0.00037404080210293894,
+    0.002174053390603888
+  ],
+  "ci_90_percentage_points": [
+    -0.03740408021029389,
+    0.21740533906038878
+  ],
+  "lower_bound_test": {
+    "bound": -0.005,
+    "t_statistic": 8.007470446556514,
+    "pvalue": 8.2643810657498e-08
+  },
+  "upper_bound_test": {
+    "bound": 0.005,
+    "t_statistic": -5.564498882289376,
+    "pvalue": 1.1447805322677993e-05
+  },
+  "alpha": 0.05,
+  "equivalent_within_declared_margin": true
+}

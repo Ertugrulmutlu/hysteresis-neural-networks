@@ -1,0 +1,24 @@
+{
+  "A": {
+    "barrier_height": 0.0,
+    "alpha_at_maximum": 0.0,
+    "endpoint_loss_sab": 14.951095545424124,
+    "endpoint_loss_sba": 0.03734329434035237,
+    "maximum_interpolated_loss": 14.951095545424124
+  },
+  "B": {
+    "barrier_height": 0.0,
+    "alpha_at_maximum": 1.0,
+    "endpoint_loss_sab": 0.03897366571239935,
+    "endpoint_loss_sba": 12.256373976170098,
+    "maximum_interpolated_loss": 12.256373976170098
+  },
+  "full": {
+    "barrier_height": 0.0,
+    "alpha_at_maximum": 0.0,
+    "endpoint_loss_sab": 7.702312913513183,
+    "endpoint_loss_sba": 5.977014083099365,
+    "maximum_interpolated_loss": 7.702312913513183
+  },
+  "convention": "W(alpha)=(1-alpha)W_SAB+alpha W_SBA; raw, not permutation-aligned"
+}

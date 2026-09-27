@@ -1,0 +1,105 @@
+{
+  "steps": [
+    10000,
+    25000,
+    50000
+  ],
+  "complete_seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "incomplete_seeds": {},
+  "level_statistics": {
+    "10000": {
+      "n": 5,
+      "mean": 0.1532443879984766,
+      "median": 0.15768625237847766,
+      "standard_deviation": 0.02240251356706664,
+      "bootstrap_ci_95": [
+        0.13573321713775988,
+        0.1707555588591933
+      ]
+    },
+    "25000": {
+      "n": 5,
+      "mean": 0.16245586991744712,
+      "median": 0.15368159670326986,
+      "standard_deviation": 0.02258981032118716,
+      "bootstrap_ci_95": [
+        0.14556465306576452,
+        0.1810732982481979
+      ]
+    },
+    "50000": {
+      "n": 5,
+      "mean": 0.1901786346941992,
+      "median": 0.18980516856816765,
+      "standard_deviation": 0.036537661807348173,
+      "bootstrap_ci_95": [
+        0.16105095060844343,
+        0.21930631877995502
+      ]
+    }
+  },
+  "change_statistics": {
+    "10000_to_25000": {
+      "n": 5,
+      "mean_change": 0.009211481918970522,
+      "median_change": 0.009709245777889897,
+      "standard_deviation": 0.012652079277310357,
+      "bootstrap_ci_95": [
+        -0.0005774473269166025,
+        0.019000411164857643
+      ],
+      "paired_t_statistic": 1.6279932565129338,
+      "paired_t_pvalue": 0.17885670163377895,
+      "wilcoxon_statistic": 3.0,
+      "wilcoxon_pvalue": 0.3125,
+      "paired_cohens_dz": 0.7280607176948345,
+      "positive_count": 3,
+      "negative_count": 2,
+      "zero_count": 0
+    },
+    "10000_to_50000": {
+      "n": 5,
+      "mean_change": 0.03693424669572263,
+      "median_change": 0.050886501729621725,
+      "standard_deviation": 0.03171109569948129,
+      "bootstrap_ci_95": [
+        0.008694338582485117,
+        0.05919299758433316
+      ],
+      "paired_t_statistic": 2.6043718921618253,
+      "paired_t_pvalue": 0.059772579797698,
+      "wilcoxon_statistic": 1.0,
+      "wilcoxon_pvalue": 0.125,
+      "paired_cohens_dz": 1.1647105179127184,
+      "positive_count": 4,
+      "negative_count": 1,
+      "zero_count": 0
+    },
+    "25000_to_50000": {
+      "n": 5,
+      "mean_change": 0.027722764776752108,
+      "median_change": 0.04714617880010019,
+      "standard_deviation": 0.0434745384840747,
+      "bootstrap_ci_95": [
+        -0.007578225756494206,
+        0.05857666034157609
+      ],
+      "paired_t_statistic": 1.4258917685293486,
+      "paired_t_pvalue": 0.2270430277098016,
+      "wilcoxon_statistic": 2.0,
+      "wilcoxon_pvalue": 0.1875,
+      "paired_cohens_dz": 0.6376781845978038,
+      "positive_count": 4,
+      "negative_count": 1,
+      "zero_count": 0
+    }
+  },
+  "plateau_equivalence_margin": 0.01,
+  "measured_horizon_conclusion": "residue remains clearly above zero over the measured horizon; late-horizon changes are too variable for a clear conclusion. This describes persistence only through 50,000 measured updates."
+}

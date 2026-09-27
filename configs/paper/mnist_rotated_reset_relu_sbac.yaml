@@ -1,0 +1,5 @@
+base_config: ../../configs/mnist_common_relaxation_sbac.yaml
+data: {protocol: rotated_mnist, rotation_degrees_A: 0, rotation_degrees_B: 90}
+model: {activation: relu}
+train: {relaxation_optimizer_policy: reset}
+logging: {run_name: mnist_rotated_SBAC_reset_relu_seed1337_normnone}

@@ -1,0 +1,34 @@
+{
+  "explained_variance_ratio": [
+    0.8033602833747864,
+    0.08454577624797821
+  ],
+  "n_points": 42,
+  "parameter_count": 421642,
+  "checkpoint_epochs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "phase_boundary_epoch": 10,
+  "centered_on_common_initialization": true,
+  "geometry_note": "The 2D PCA projection does not preserve all weight-space geometry."
+}

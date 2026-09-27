@@ -38,4 +38,3 @@ train:
 logging:
   save_dir: "./runs"
   save_weights_every_epoch: true
-  save_activations: false

@@ -1,0 +1,86 @@
+{
+  "primary_endpoint": "delta_H_repr at 50000 updates",
+  "delta_definition": "LeakyReLU minus ReLU",
+  "practical_margin": 0.01,
+  "primary_statistics": {
+    "relaxation_step": 50000,
+    "metric": "h_repr",
+    "analysis_role": "primary",
+    "n": 5,
+    "mean": -0.03975836999003539,
+    "median": -0.01959041020792096,
+    "standard_deviation": 0.04118965361203251,
+    "bootstrap_ci_95": [
+      -0.07721362007663861,
+      -0.0175877957635024
+    ],
+    "paired_t_statistic": -2.1583677010174274,
+    "paired_t_pvalue": 0.09706649761717745,
+    "wilcoxon_statistic": 0.0,
+    "wilcoxon_pvalue": 0.0625,
+    "paired_cohens_dz": -0.9652513799829818,
+    "positive_count": 0,
+    "negative_count": 5,
+    "zero_count": 0
+  },
+  "primary_tost": {
+    "tost_lower_pvalue": 0.9092467224351465,
+    "tost_upper_pvalue": 0.02701247255386622,
+    "tost_equivalent": false
+  },
+  "secondary_delta_h_repr_change": {
+    "start_step": 10000,
+    "end_step": 50000,
+    "n": 5,
+    "mean": -0.04122408617208666,
+    "median": -0.019255384861001312,
+    "standard_deviation": 0.04813290576985202,
+    "bootstrap_ci_95": [
+      -0.08295436612892818,
+      -0.007485978788097025
+    ],
+    "paired_t_statistic": -1.9151110350963183,
+    "paired_t_pvalue": 0.1279900393407229,
+    "wilcoxon_statistic": 0.0,
+    "wilcoxon_pvalue": 0.0625,
+    "paired_cohens_dz": -0.8564636917870707,
+    "positive_count": 0,
+    "negative_count": 5,
+    "zero_count": 0
+  },
+  "classification": "LeakyReLU meaningfully reduces residue over the measured horizon",
+  "interpretation_limit": "Evidence for or against activation-mediated contribution; not a causal or sole-mechanism claim.",
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "steps": [
+    10000,
+    25000,
+    50000
+  ],
+  "metrics_compared": {
+    "h_repr": "representation_history_score",
+    "cka_conv2": "cka_conv2",
+    "cka_fc1": "cka_fc1",
+    "prediction_disagreement": "prediction_disagreement",
+    "js_divergence": "js_divergence",
+    "absolute_accuracy_gap": "absolute_accuracy_gap",
+    "signed_accuracy_difference": "signed_full_accuracy_difference_sabc_minus_sbac",
+    "conv1_average_activation_variance_difference": "conv1_average_activation_variance_difference",
+    "conv1_average_positive_activity_rate_difference": "conv1_average_positive_activity_rate_difference",
+    "conv1_average_sparsity_difference": "conv1_average_sparsity_difference",
+    "conv1_below_threshold_positive_activity_ratio_difference": "conv1_below_threshold_positive_activity_ratio_difference",
+    "conv2_average_activation_variance_difference": "conv2_average_activation_variance_difference",
+    "conv2_average_positive_activity_rate_difference": "conv2_average_positive_activity_rate_difference",
+    "conv2_average_sparsity_difference": "conv2_average_sparsity_difference",
+    "conv2_below_threshold_positive_activity_ratio_difference": "conv2_below_threshold_positive_activity_ratio_difference",
+    "fc1_average_activation_variance_difference": "fc1_average_activation_variance_difference",
+    "fc1_average_positive_activity_rate_difference": "fc1_average_positive_activity_rate_difference",
+    "fc1_average_sparsity_difference": "fc1_average_sparsity_difference",
+    "fc1_below_threshold_positive_activity_ratio_difference": "fc1_below_threshold_positive_activity_ratio_difference"
+  }
+}
