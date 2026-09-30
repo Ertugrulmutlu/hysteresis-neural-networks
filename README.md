@@ -1,6 +1,50 @@
-# Hysteresis in Neural Networks
+# Behavioral Convergence Without Representational Convergence
+## Persistent Training-History Dependence in Neural Networks
 
-This repository studies order dependence in sequential MNIST training. Part 1 trains the same `SimpleCNN` from the same initialization in two orders: **SAB** learns digits 0–4 (A), then 5–9 (B); **SBA** learns B, then A. Part 2 adds controlled common-relaxation, representation, activation, and fresh linear-probe analyses. The README reports the current empirical results while keeping every claim scoped to the tested protocol.
+[![arXiv](https://img.shields.io/badge/arXiv-2609.37836-b31b1b.svg)](https://arxiv.org/abs/2609.37836)
+[![DOI](https://img.shields.io/badge/DOI-10.48550%2FarXiv.2609.37836-blue.svg)](https://doi.org/10.48550/arXiv.2609.37836)
+
+Official code and reproducibility repository for:
+
+**Ertuğrul Mutlu. _Behavioral Convergence Without Representational Convergence: Persistent Training-History Dependence in Neural Networks._ arXiv:2609.37836 [cs.LG], 2026.**
+
+- **Paper:** https://arxiv.org/abs/2609.37836
+- **PDF:** https://arxiv.org/pdf/2609.37836
+- **DOI:** https://doi.org/10.48550/arXiv.2609.37836
+- **Repository:** https://github.com/Ertugrulmutlu/hysteresis-neural-networks
+
+## Overview
+
+This repository studies whether neural networks can become behaviorally similar while retaining internal representations that depend on earlier training history.
+
+Paired `SimpleCNN` models start from identical weights and experience reversed sequential-training histories: **SAB** learns MNIST digits 0–4 (A) followed by 5–9 (B), while **SBA** receives the reverse order. The main paper extends this design with a deterministic **common-relaxation** phase, comparing **SABC** with **SBAC** after both histories receive the same balanced digits 0–9 training distribution.
+
+The repository includes the training code, paired-run validation, representation analyses, long-horizon common-relaxation experiments, fresh linear probes, activation-function controls, same-label rotated-MNIST controls, and the paper-facing reproducibility artifacts.
+
+## Main findings
+
+Under the tested `SimpleCNN`/MNIST protocols:
+
+- Across **20 paired runs**, 16 satisfy the predeclared behavioral-matching criterion while retaining a mean representation-history score of **0.139** with a **95% bootstrap CI of [0.127, 0.153]**.
+- After **50,000 shared common-relaxation updates**, the mean representation-history score remains **0.190** across five paired seeds, with a **95% bootstrap CI of [0.161, 0.219]**, while the mean absolute accuracy gap remains about **0.18 percentage points**.
+- Fresh FC1 linear probes show a repeatable low-data readout advantage for SABC at **50 labeled examples per class**, while the **500-examples-per-class** endpoint is practically equivalent within the declared **±0.5 percentage-point** margin.
+- A symmetric **rotated-MNIST same-label control** reproduces persistent representation-history differences after behavioral matching.
+- A matched-learning-rate **ReLU vs. LeakyReLU** control reduces the 50,000-update representation residue by about **0.040** on average across five paired seeds, providing directional evidence that activation-mediated plasticity contributes to persistence.
+
+The central empirical result is therefore **behavioral convergence without representational convergence over the measured horizon**. The evidence is protocol-scoped and does not establish permanent memory, universal neural-network hysteresis, or a general causal law.
+
+## Citation
+
+If you use this repository or its results, please cite:
+
+```bibtex
+@article{mutlu2026behavioral,
+  title   = {Behavioral Convergence Without Representational Convergence: Persistent Training-History Dependence in Neural Networks},
+  author  = {Mutlu, Ertuğrul},
+  journal = {arXiv preprint arXiv:2609.37836},
+  year    = {2026}
+}
+```
 
 ## Scientific scope and limitations
 
@@ -218,7 +262,7 @@ uv run python -m src.analysis.compare_paper_conditions `
 ```
 
 Paper configs live under `configs/paper/`. They inherit the validated common-relaxation protocol and resolve to complete configs before a run is created.
-# Fresh Linear-Probe Analysis
+## Fresh Linear-Probe Analysis
 
 The fresh linear-probe analysis asks whether history-dependent representations merely have different geometry or also make class information differently accessible to a linear readout. It reuses the trained common-relaxation CNN checkpoints: CNN backbones are never retrained. Each backbone is put in evaluation mode, frozen, and checked bit-for-bit after probing. Only a new `Linear(feature_dimension, 10)` head is optimized.
 
@@ -417,7 +461,7 @@ uv run python -m src.analysis.aggregate_linear_probe `
   --bootstrap-samples 10000 --bootstrap-seed 12345 --device cuda `
   --outdir plots\linear_probe_class_split_reset_relu_20seeds_final_conv2
 ```
-# Long Common-Relaxation Experiment
+## Long Common-Relaxation Experiment
 
 The 10,000-update experiment establishes residue only at that measured horizon; it cannot establish permanent hysteresis. The predeclared follow-up measures whether the same representation-history score decays, plateaus, or increases at 25,000 and 50,000 shared-C optimizer updates.
 
@@ -510,7 +554,7 @@ The layerwise CKA pattern suggests that the late increase in `H_repr` is driven 
 | 50,000 | 0.9840 | **0.8304** | 0.7893 | 0.7143 |
 
 **Long-horizon conclusion.** The two histories remain behaviorally close but do not converge to the same measured internal representation over 50,000 shared updates. The evidence supports **behavioral convergence without representational convergence over the measured horizon**. It does not establish permanent memory, strict physical hysteresis, or a universally increasing residue.
-# LeakyReLU Mechanism Control
+## LeakyReLU Mechanism Control
 
 This mechanism-control experiment tests whether ReLU sparse/low-positive-activity behavior may reduce plasticity and help preserve history-dependent representations. The final comparison reruns both ReLU and LeakyReLU at the same stable learning rate of 0.04 after the original learning-rate-0.05 LeakyReLU condition showed numerical instability. The completed results are reported below.
 
@@ -562,7 +606,7 @@ uv run python -m src.analysis.compare_activation_conditions `
   --bootstrap-samples 10000 --bootstrap-seed 12345 `
   --outdir plots\activation_condition_comparison_long50k_5seeds
 ```
-# Numerical Stability Diagnostics
+## Numerical Stability Diagnostics
 
 An optional fail-fast tracer was added because four completed LeakyReLU long50k runs—SABC seed303 and SBAC seeds101, 202, and 303—first have a known non-finite checkpoint at epoch 11, immediately after the history-domain switch. The tracer diagnoses a new run from initialization; it does not repair, overwrite, or include the affected completed artifacts. No stabilization choice, including clipping, learning-rate changes, or optimizer reset, is made before diagnosis.
 
